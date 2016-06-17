@@ -47,7 +47,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         ImageView characterImage = (ImageView) findViewById(R.id.character_image);
         TextView characterDescription = (TextView) findViewById(R.id.character_description);
 
-        Picasso.with(this).load(character.getThumbnailUrl()).centerCrop().into(characterImage);
+        Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
         characterDescription.setText(character.getDescription());
 
     }

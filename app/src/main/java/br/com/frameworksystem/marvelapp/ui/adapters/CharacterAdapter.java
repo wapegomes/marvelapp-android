@@ -47,7 +47,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Character character = characters.get(position);
-        Picasso.with(context).load(character.getThumbnailUrl()).centerCrop().into(holder.characterImage);
+        Picasso.with(context).load(character.getThumbnailUrl()).centerCrop().resize(200,200).into(holder.characterImage);
         holder.characterDescription.setText(character.getDescription());
         holder.characterName.setText(character.getName());
     }
