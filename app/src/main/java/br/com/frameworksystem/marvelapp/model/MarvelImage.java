@@ -39,6 +39,8 @@ public class MarvelImage {
     }
   }
 
+
+
   @Override public String toString() {
     return "MarvelImage{" + "path='" + path + '\'' + ", extension='" + extension + '\'' + '}';
   }

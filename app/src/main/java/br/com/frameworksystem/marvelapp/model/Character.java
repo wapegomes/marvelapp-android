@@ -11,7 +11,8 @@ public class Character {
     public String modified;
     public String resourceUri;
     public List<MarvelUrl> urls;
-    public MarvelImage thumbnail;
+    public String thumbnailUrl;
+//    public MarvelUrl thumbnail;
 //    public MarvelResources<ComicResourceDto> comics;
 //    public MarvelResources<StoryResourceDto> stories;
 //    public MarvelResources<EventResourceDto> events;
@@ -27,7 +28,7 @@ public class Character {
                 ", modified='" + modified + '\'' +
                 ", resourceUri='" + resourceUri + '\'' +
                 ", urls=" + urls +
-                ", thumbnail=" + thumbnail +
+                ", thumbnail=" + thumbnailUrl +
                 '}';
     }
 
@@ -79,11 +80,11 @@ public class Character {
         this.urls = urls;
     }
 
-    public MarvelImage getThumbnail() {
-        return thumbnail;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setThumbnail(MarvelImage thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }
