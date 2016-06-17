@@ -7,7 +7,7 @@
             android:title="@string/personagens" />
 
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_evento"
             android:title="@string/eventos" />
     </group>
 
