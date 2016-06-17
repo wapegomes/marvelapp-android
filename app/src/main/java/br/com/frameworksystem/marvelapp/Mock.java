@@ -1,10 +1,10 @@
 package br.com.frameworksystem.marvelapp;
 
-import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.frameworksystem.marvelapp.model.Character;
+import br.com.frameworksystem.marvelapp.model.Event;
 
 /**
  * Created by wgomes on 16/06/16.
@@ -12,7 +12,7 @@ import br.com.frameworksystem.marvelapp.model.Character;
 
 public class Mock {
 
-    public static List<Character> getCharacter() {
+    public static List<Character> getCharacters() {
 
         List<Character> characterList = new ArrayList<>();
 
@@ -51,4 +51,43 @@ public class Mock {
 
     }
 
+
+    public static List<Event> getEvents() {
+
+        List<Event> eventsList = new ArrayList<>();
+
+        Event event = new Event();
+        event.setTitle("Spider-Island");
+        event.setDescription("This summer, heroes, villains and ordinary people across Manhattan gain " +
+                "spider abilities, but not all realize that with great power comes great responsibility! " +
+                "Can Spider-Man keep the peace? Dan Slott spearheads this arachna-tastic event in the pages " +
+                "of Amazing Spider-Man!");
+        event.setUrl("http://marvel.com/comics/events/305/spider-island?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+
+        Event event2 = new Event();
+        event.setTitle("Age of Apocalypse");
+        event.setDescription("In a twisted version of the world they knew, the X-Men battle against the eternal mutant " +
+                "pocalypse as Bishop seeks to repair the timeline. Legion, Xavier's own son, attempts to " +
+                "kill off all of Xavier's enemies; however, when Legion attempts to murder Magneto, Xavier " +
+                "sacrifices his own life to save Magnus. As a result, Magneto casts off his anti-human sentiments " +
+                "and carries on Xavier's dream of peaceful co-existence, thereby founding the X-Men.");
+        event.setUrl("http://marvel.com/comics/events/227/age_of_apocalypse?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+
+
+        Event event3 = new Event();
+        event.setTitle("Secret Wars");
+        event.setDescription("The most powerful heroes and villains in the Marvel Universe square off " +
+                "on Battleword with the victor promised their greatest dreams and desires! Writer Jim Shooter " +
+                "and artists Mike Zeck and Bob Layton introduce the Beyonder in a 12-issue event featuring " +
+                "the Avengers, the X-Men, the Fantastic Four, Spider-Man, Magneto, Doctor Doom and more!");
+        event.setUrl("http://marvel.com/comics/events/270/secret_wars?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+
+        eventsList.add(event);
+        eventsList.add(event2);
+        eventsList.add(event3);
+
+
+        return eventsList;
+
+    }
 }
