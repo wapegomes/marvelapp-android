@@ -1,9 +1,11 @@
 package br.com.frameworksystem.marvelapp.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Character {
+public class Character implements Serializable{
+
 
     public String id;
     public String name;

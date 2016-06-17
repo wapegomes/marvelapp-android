@@ -9,4 +9,6 @@
     <string name="frameworkSystem">Framework System - Android</string>
     <string name="eventos">Eventos</string>
 
+    <string name="title_share">Compartilhar</string>
+
 </resources>
