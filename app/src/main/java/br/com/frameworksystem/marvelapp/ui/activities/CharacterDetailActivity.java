@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.model.Character;
 
@@ -45,7 +47,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         ImageView characterImage = (ImageView) findViewById(R.id.character_image);
         TextView characterDescription = (TextView) findViewById(R.id.character_description);
 
-//        Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
+        Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
         characterDescription.setText(character.getDescription());
 
     }

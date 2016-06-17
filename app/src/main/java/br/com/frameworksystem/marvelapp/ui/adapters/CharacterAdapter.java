@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import br.com.frameworksystem.marvelapp.R;
@@ -45,7 +47,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Character character = characters.get(position);
-//        Picasso.with(context).load(character.getThumbnailUrl()).into(holder.characterImage);
+        Picasso.with(context).load(character.getThumbnailUrl()).into(holder.characterImage);
         holder.characterDescription.setText(character.getDescription());
         holder.characterName.setText(character.getName());
     }

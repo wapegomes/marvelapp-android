@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
     <ImageView
         android:id="@+id/character_image"
         android:layout_width="match_parent"
