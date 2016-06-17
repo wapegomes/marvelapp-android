@@ -30,4 +30,60 @@ public class Character {
                 ", thumbnail=" + thumbnail +
                 '}';
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+    public String getResourceUri() {
+        return resourceUri;
+    }
+
+    public void setResourceUri(String resourceUri) {
+        this.resourceUri = resourceUri;
+    }
+
+    public List<MarvelUrl> getUrls() {
+        return urls;
+    }
+
+    public void setUrls(List<MarvelUrl> urls) {
+        this.urls = urls;
+    }
+
+    public MarvelImage getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(MarvelImage thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 }
