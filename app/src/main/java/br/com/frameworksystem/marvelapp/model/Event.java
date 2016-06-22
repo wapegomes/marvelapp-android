@@ -10,6 +10,7 @@ public class Event {
     private String title;
     private String description;
     private String url;
+    private String imgUrl;
 
     public String getId() {
         return id;
@@ -41,5 +42,13 @@ public class Event {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
