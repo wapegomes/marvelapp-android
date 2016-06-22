@@ -50,6 +50,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
         characterDescription.setText(character.getDescription());
 
+
     }
 
     //pegando o menu na toolbar (topo da tela)

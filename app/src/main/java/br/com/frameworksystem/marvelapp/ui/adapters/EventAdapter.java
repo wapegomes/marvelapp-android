@@ -47,6 +47,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         Event event = events.get(position);
         holder.eventTitle.setText(event.getTitle());
+        Picasso.with(context).load(event.getImgUrl()).centerCrop().resize(400,400).into(holder.eventImg);
 
     }
 
@@ -57,11 +58,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView eventImg;
         TextView eventTitle;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            eventImg = (ImageView) itemView.findViewById(R.id.event_img);
             eventTitle = (TextView) itemView.findViewById(R.id.event_title);
 
             itemView.setOnClickListener(onClickListener);
@@ -71,7 +74,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(v.getContext(),"Clicou",Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(),"Clicou",Toast.LENGTH_SHORT).show();
             }
         };
 
