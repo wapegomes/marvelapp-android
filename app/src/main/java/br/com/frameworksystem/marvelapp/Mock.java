@@ -63,6 +63,7 @@ public class Mock {
                 "Can Spider-Man keep the peace? Dan Slott spearheads this arachna-tastic event in the pages " +
                 "of Amazing Spider-Man!");
         event.setUrl("http://marvel.com/comics/events/305/spider-island?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+        event.setImgUrl("http://i.annihil.us/u/prod/marvel/i/mg/3/70/51e827657c1d0.jpg");
 
         Event event2 = new Event();
         event.setTitle("Age of Apocalypse");
@@ -72,7 +73,7 @@ public class Mock {
                 "sacrifices his own life to save Magnus. As a result, Magneto casts off his anti-human sentiments " +
                 "and carries on Xavier's dream of peaceful co-existence, thereby founding the X-Men.");
         event.setUrl("http://marvel.com/comics/events/227/age_of_apocalypse?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
-
+        event.setImgUrl("http://i.annihil.us/u/prod/marvel/i/mg/5/e0/51ca0e08a6546.jpg");
 
         Event event3 = new Event();
         event.setTitle("Secret Wars");
@@ -81,6 +82,7 @@ public class Mock {
                 "and artists Mike Zeck and Bob Layton introduce the Beyonder in a 12-issue event featuring " +
                 "the Avengers, the X-Men, the Fantastic Four, Spider-Man, Magneto, Doctor Doom and more!");
         event.setUrl("http://marvel.com/comics/events/270/secret_wars?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+        event.setImgUrl("http://i.annihil.us/u/prod/marvel/i/mg/f/00/51cdeb7048dac.jpg");
 
         eventsList.add(event);
         eventsList.add(event2);
