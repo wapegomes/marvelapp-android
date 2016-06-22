@@ -1,10 +1,12 @@
 package br.com.frameworksystem.marvelapp.model;
 
+import java.io.Serializable;
+
 /**
  * Created by wgomes on 17/06/16.
  */
 
-public class Event {
+public class Event implements Serializable{
 
     private String id;
     private String title;

@@ -30,6 +30,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activities.MainActivity" />
         </activity>
+
+
+        <activity
+            android:name=".ui.activities.EventDetailActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

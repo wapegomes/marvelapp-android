@@ -15,7 +15,10 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.frameworksystem.marvelapp.R;
+import br.com.frameworksystem.marvelapp.model.Character;
 import br.com.frameworksystem.marvelapp.model.Event;
+import br.com.frameworksystem.marvelapp.ui.activities.CharacterDetailActivity;
+import br.com.frameworksystem.marvelapp.ui.activities.EventDetailActivity;
 
 /**
  * Created by wgomes on 22/06/16.
@@ -74,7 +77,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(v.getContext(),"Clicou",Toast.LENGTH_SHORT).show();
+                int position = recyclerView.getChildAdapterPosition(v);
+                Event event = events.get(position);
+
+                Intent intent = new Intent(context, EventDetailActivity.class);
+                intent.putExtra("event", event);
+                context.startActivity(intent);
             }
         };
 
