@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.model.Character;
 import br.com.frameworksystem.marvelapp.ui.fragments.CharacterFragment;
+import br.com.frameworksystem.marvelapp.ui.fragments.EventFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_personagens) {
             fragment = CharacterFragment.newInstance();
         } else if (id == R.id.nav_evento) {
-
+            fragment = EventFragment.newInstance();
         }
 
         if (fragment != null) {
