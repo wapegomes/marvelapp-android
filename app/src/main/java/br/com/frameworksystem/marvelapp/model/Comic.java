@@ -7,7 +7,7 @@ import java.util.List;
  * Created by wgomes on 29/06/16.
  */
 
-public class Comic implements Serializable{
+public class Comic implements Serializable {
 
     private String title;
     private String description;
@@ -15,7 +15,6 @@ public class Comic implements Serializable{
     private String detailUrl;
     private String price;
     private String thumbnailUrl;
-
 
 
     public String getTitle() {
@@ -65,3 +64,4 @@ public class Comic implements Serializable{
     public void setThumbnailUrl(String thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
     }
+}
