@@ -23,9 +23,11 @@ public class EventDetailActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_event_detail);
 
-        event = (Event) getIntent().getSerializableExtra("event");
-
+        if (getIntent().hasExtra("event")) {
+            event = (Event) getIntent().getSerializableExtra("event");
+        }
         WebView webView = (WebView) findViewById(R.id.webview_event_detail);
         webView.loadUrl(event.getUrl());
     }
+
 }

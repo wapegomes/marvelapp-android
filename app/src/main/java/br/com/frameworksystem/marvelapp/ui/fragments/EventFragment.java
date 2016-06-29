@@ -49,4 +49,10 @@ public class EventFragment extends Fragment {
         recyclerView.setAdapter(eventAdapter);
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().finish();
+    }
 }

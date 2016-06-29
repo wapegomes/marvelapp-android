@@ -49,8 +49,4 @@ public class CharacterFragment extends Fragment {
 
         }
 
-
-
-
-
 }
