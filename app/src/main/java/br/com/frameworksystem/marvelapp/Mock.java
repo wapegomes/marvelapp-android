@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.frameworksystem.marvelapp.model.Character;
+import br.com.frameworksystem.marvelapp.model.Comic;
 import br.com.frameworksystem.marvelapp.model.Event;
 
 /**
@@ -91,5 +92,99 @@ public class Mock {
 
         return eventsList;
 
+    }
+
+
+    public static List<Comic> getCommics(String characterName) {
+
+        List<Comic> comicList = new ArrayList<>();
+
+        if (characterName.equals("Spider-Man")) {
+
+            Comic comic = new Comic();
+            comic.setTitle("Amazing Spider-Man (2015) #15");
+            comic.setDescription("“Power Play” comes to its rousing conclusion! Regent’s master plan is working until Mary Jane Watson gets into the fray!");
+            List<String> languageList = new ArrayList<>();
+            languageList.add("en-us");
+            comic.setLanguages(languageList);
+            comic.setPrice("3.99");
+            comic.setThumbnailUrl("http://i.annihil.us/u/prod/marvel/i/mg/5/e0/576d530f0c30c.jpg");
+
+            Comic comic2 = new Comic();
+            comic2.setTitle("Spider-Man/Deadpool (2016) #6");
+            comic2.setDescription("Deadpool goes Hollywood! See the M w/the M on the set of his own MOVIE! And he brings his pal Spidey along, as he has lots of experience selling out! All-Star Special Issue—written by Scott Aukerman of TV’s Comedy Bang Bang!");
+            List<String> languageList2 = new ArrayList<>();
+            languageList2.add("en-us");
+            languageList2.add("pt_br");
+            comic2.setLanguages(languageList);
+            comic2.setPrice("3.99");
+            comic2.setDetailUrl("http://marvel.com/comics/issue/52564/spider-mandeadpool_2016_6?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+            comic2.setThumbnailUrl("http://i.annihil.us/u/prod/marvel/i/mg/6/40/576d3ce92b113.jpg");
+
+            comicList.add(comic);
+            comicList.add(comic2);
+
+        } else if (characterName.equals("Iron Man")) {
+
+            Comic comic = new Comic();
+            comic.setTitle("All-New, All-Different Avengers (2015) #11");
+            comic.setDescription("The Avengers--captives on the Stalag of Space! " +
+                    "Its mysterious alien warden cannot be beaten by conventional means, but the Avengers’ " +
+                    "prison break will take them into an even more dangerous realm!");
+            List<String> languageList = new ArrayList<>();
+            languageList.add("en-us");
+            comic.setLanguages(languageList);
+            comic.setPrice("3.99");
+            comic.setThumbnailUrl("http://i.annihil.us/u/prod/marvel/i/mg/c/90/576d4bccd73b6.jpg");
+            comic.setDetailUrl("http://marvel.com/comics/issue/55364/all-new_all-different_avengers_2015_11?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+
+            Comic comic2 = new Comic();
+            comic2.setTitle("Iron Man (2012) #10");
+            comic2.setDescription("Death Head and Iron Man team-up to hunt down a genocidal criminal. " +
+                    "Not the problem. A shipful of dead badoon. Not the problem. What Tony finds in " +
+                    "the depths of that ship: the problem. Big problem. The lead into the biggest " +
+                    "Tony Stark story of the year.");
+            List<String> languageList2 = new ArrayList<>();
+            languageList2.add("en-us");
+            comic2.setLanguages(languageList);
+            comic2.setPrice("1.99");
+            comic2.setDetailUrl("http://marvel.com/comics/issue/46209/iron_man_2012_10?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+            comic2.setThumbnailUrl("http://i.annihil.us/u/prod/marvel/i/mg/7/20/5182d6cde6399.jpg");
+
+            comicList.add(comic);
+            comicList.add(comic2);
+
+        } else if (characterName.equals("Captain America")) {
+
+            Comic comic = new Comic();
+            comic.setTitle("Captain America: Steve Rogers (2016) #2");
+            comic.setDescription("As Steve battles a resurgent Hydra more dangerous than ever before, " +
+                    "he must confront a ghost from his past!");
+            List<String> languageList = new ArrayList<>();
+            languageList.add("en-us");
+            comic.setLanguages(languageList);
+            comic.setPrice("3.99");
+            comic.setThumbnailUrl("http://i.annihil.us/u/prod/marvel/i/mg/4/c0/5769689a8d4d4.jpg");
+            comic.setDetailUrl("http://marvel.com/comics/issue/57866/captain_america_steve_rogers_2016_2?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+
+            Comic comic2 = new Comic();
+            comic2.setTitle("Captain America (2011) #18");
+            comic2.setDescription("The Omega Madbombs have been unleashed, " +
+                    "and no one is safe! Agent 13 and Dum Dum Dugan duke it out with Baron Zemo in the depths of space! " +
+                    "Captain America tackles Codename: Bravo and Queen Hydra with the fate of the world in the balance..." +
+                    "But first he has to fight his way through an army of Discordians!");
+            List<String> languageList2 = new ArrayList<>();
+            languageList2.add("en-us");
+            comic2.setLanguages(languageList);
+            comic2.setPrice("1.99");
+            comic2.setDetailUrl("http://marvel.com/comics/issue/40391/captain_america_2011_18?utm_campaign=apiRef&utm_source=277232a94db26746c653c879d30cec89");
+            comic2.setThumbnailUrl("http://i.annihil.us/u/prod/marvel/i/mg/3/70/516857a41de34.jpg");
+
+            comicList.add(comic);
+            comicList.add(comic2);
+
+        }
+
+        return comicList;
     }
 }
