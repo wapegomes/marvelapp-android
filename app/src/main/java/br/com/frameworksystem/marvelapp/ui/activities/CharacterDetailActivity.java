@@ -59,8 +59,10 @@ public class CharacterDetailActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.character_detail, menu);
 
         //criando a intent e validando tudo, sem precidar de actios send
-        ShareCompat.IntentBuilder intent = ShareCompat.IntentBuilder.from(this).setText(character.getDescription()).setType("text/plain");
-        ShareActionProvider actionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menu.findItem(R.id.action_share));
+        ShareCompat.IntentBuilder intent = ShareCompat.IntentBuilder.from(this).
+                setText(character.getDescription()).setType("text/plain");
+        ShareActionProvider actionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider
+                (menu.findItem(R.id.action_share));
         actionProvider.setShareIntent(intent.getIntent());
 
         //ShareCompat.configureMenuItem(menu, R.id.action_share, intent);
