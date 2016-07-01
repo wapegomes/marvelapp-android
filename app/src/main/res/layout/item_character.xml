@@ -9,12 +9,14 @@
     card_view:cardPreventCornerOverlap="true"
     card_view:cardBackgroundColor="#E6E6E6"
     android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingPrefix">
 
         <ImageView
             android:id="@+id/character_image"
@@ -24,6 +26,7 @@
             android:adjustViewBounds="true"/>
 
         <TextView
+            fontPath="fonts/Roboto-Italic.ttf"
             android:id="@+id/character_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +34,8 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:textSize="24sp"
-            android:ellipsize="end"/>
+            android:ellipsize="end"
+            />
 
         <TextView
             android:id="@+id/character_description"

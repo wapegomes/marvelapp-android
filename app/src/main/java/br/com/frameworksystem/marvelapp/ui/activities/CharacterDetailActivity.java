@@ -21,7 +21,7 @@ import br.com.frameworksystem.marvelapp.model.Character;
  * Created by wgomes on 17/06/16.
  */
 
-public class CharacterDetailActivity extends AppCompatActivity {
+public class CharacterDetailActivity extends BaseActivity {
 
     private Character character;
 
