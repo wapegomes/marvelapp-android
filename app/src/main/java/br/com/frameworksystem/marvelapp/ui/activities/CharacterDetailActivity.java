@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -72,13 +73,19 @@ public class CharacterDetailActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //validando se o usuario clicou no botao share
-        if (item.getItemId() == R.id.action_share) {
-            share();
+        if (item.getItemId() == R.id.action_favorite) {
+            item.setIcon(R.drawable.ic_action_liked);
+            registerRemoveFavorite();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void registerRemoveFavorite() {
+
+    }
+
 
     //metodo para compartilhar contéudo
     private void share() {
