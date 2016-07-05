@@ -6,9 +6,12 @@ package br.com.frameworksystem.marvelapp.util;
 
 public interface Constants {
 
+    String CHARACTER_TABLE = "character";
+
+    String EVENT_TABLE = "event";
 
     String DDL_CHARACTER = "CREATE TABLE [character] (\n" +
-            "  [id] TEXT NOT NULL, \n" +
+            "  [id] INTEGER IDENTITY (1, 1), \n" +
             "  [name] VARCHAR(100), \n" +
             "  [description] TEXT, \n" +
             "  [link] TEXT, \n" +
@@ -17,7 +20,7 @@ public interface Constants {
             "  CONSTRAINT [] PRIMARY KEY ([id]));\n";
 
     String DDL_EVENT = "CREATE TABLE [event] (\n" +
-            "  [id] TEXT NOT NULL, \n" +
+            "  [id] INTEGER IDENTITY (1, 1), \n" +
             "  [name] VARCHAR(100), \n" +
             "  [description] TEXT, \n" +
             "  [image] TEXT, \n" +

@@ -1,6 +1,11 @@
 package br.com.frameworksystem.marvelapp.ui.activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -13,10 +18,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
 
 import br.com.frameworksystem.marvelapp.R;
+import br.com.frameworksystem.marvelapp.bd.SQLiteHelper;
 import br.com.frameworksystem.marvelapp.model.Character;
+import br.com.frameworksystem.marvelapp.util.Constants;
 
 /**
  * Created by wgomes on 17/06/16.
@@ -25,11 +35,20 @@ import br.com.frameworksystem.marvelapp.model.Character;
 public class CharacterDetailActivity extends BaseActivity {
 
     private Character character;
+    private SQLiteDatabase db;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     //no oncreate se definie o layout da activity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        db = SQLiteHelper.getDatabase(this);
+
         //setando o layout
         setContentView(R.layout.activity_character_detail);
 
@@ -51,6 +70,8 @@ public class CharacterDetailActivity extends BaseActivity {
         Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
         characterDescription.setText(character.getDescription());
 
+        Cursor cursor = recuperaDado();
+
 
     }
 
@@ -65,6 +86,7 @@ public class CharacterDetailActivity extends BaseActivity {
         ShareActionProvider actionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider
                 (menu.findItem(R.id.action_share));
         actionProvider.setShareIntent(intent.getIntent());
+
 
         //ShareCompat.configureMenuItem(menu, R.id.action_share, intent);
         return super.onCreateOptionsMenu(menu);
@@ -83,8 +105,39 @@ public class CharacterDetailActivity extends BaseActivity {
     }
 
     private void registerRemoveFavorite() {
+        ContentValues dados = new ContentValues();
 
+        dados.put("name", character.getName());
+        dados.put("description",character.getDescription());
+        dados.put("favorite",1);
+
+        if (!db.isOpen()) {
+            db = SQLiteHelper.getDatabase(this);
+        }
+        db.insert(Constants.CHARACTER_TABLE, null, dados);
     }
+
+    private Cursor recuperaDado() {
+
+        Cursor cursor;
+        String where = "name=?";
+        String[] colunas = new String[]{"name", "description", "favorite"};
+        String argumentos[] = new String[]{character.getName()};
+        cursor = db.query("character", colunas, where, argumentos, null, null, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        while (cursor.moveToNext()){
+
+        }
+
+//        db.close();
+        return cursor;
+    }
+
+
 
 
     //metodo para compartilhar contéudo
@@ -99,5 +152,7 @@ public class CharacterDetailActivity extends BaseActivity {
             startActivity(intent);
         }
     }
+
+
 }
 
