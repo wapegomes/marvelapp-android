@@ -3,7 +3,6 @@ package br.com.frameworksystem.marvelapp.bd;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.SyncStateContract;
 
 import br.com.frameworksystem.marvelapp.util.Constants;
 
