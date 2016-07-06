@@ -11,5 +11,7 @@
 
     <string name="title_share">Compartilhar</string>
     <string name="favorite">Favorito</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
 
 </resources>
