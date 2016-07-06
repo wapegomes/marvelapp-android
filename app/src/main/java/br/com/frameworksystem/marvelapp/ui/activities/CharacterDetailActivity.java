@@ -16,12 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.bd.SQLiteHelper;
@@ -36,13 +35,8 @@ public class CharacterDetailActivity extends BaseActivity {
 
     private Character character;
     private SQLiteDatabase db;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    private List<Character> characterList = new ArrayList<>();
 
-    //no oncreate se definie o layout da activity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +64,7 @@ public class CharacterDetailActivity extends BaseActivity {
         Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
         characterDescription.setText(character.getDescription());
 
-        Cursor cursor = recuperaDado();
+        List<Character> characterLista = recuperaDado();
 
 
     }
@@ -105,39 +99,50 @@ public class CharacterDetailActivity extends BaseActivity {
     }
 
     private void registerRemoveFavorite() {
-        ContentValues dados = new ContentValues();
 
-        dados.put("name", character.getName());
-        dados.put("description",character.getDescription());
-        dados.put("favorite",1);
 
         if (!db.isOpen()) {
             db = SQLiteHelper.getDatabase(this);
         }
-        db.insert(Constants.CHARACTER_TABLE, null, dados);
+        if (true){
+            db.delete(Constants.CHARACTER_TABLE,"name",new String[]{character.getName()});
+        }else {
+            ContentValues dados = new ContentValues();
+
+            dados.put("name", character.getName());
+            dados.put("description", character.getDescription());
+            dados.put("favorite", 1);
+
+            db.insert(Constants.CHARACTER_TABLE, null, dados);
+        }
     }
 
-    private Cursor recuperaDado() {
+    private List<Character> recuperaDado() {
 
-        Cursor cursor;
+        Cursor cursor = null;
         String where = "name=?";
-        String[] colunas = new String[]{"name", "description", "favorite"};
+        String[] colunas = new String[]{"id, name", "description", "favorite"};
         String argumentos[] = new String[]{character.getName()};
         cursor = db.query("character", colunas, where, argumentos, null, null, null);
+        cursor.moveToFirst();
 
-        if (cursor != null) {
-            cursor.moveToFirst();
+        while (cursor.moveToNext()) {
+            characterList.add(montaDadoCharacter(cursor));
         }
 
-        while (cursor.moveToNext()){
-
-        }
-
-//        db.close();
-        return cursor;
+        db.close();
+        return characterList;
     }
 
+    private Character montaDadoCharacter(Cursor cursor) {
+        Character caracter = new Character();
+        caracter.setId(String.valueOf(cursor.getInt(cursor.getColumnIndex("id"))));
+        caracter.setName(cursor.getString(cursor.getColumnIndex("name")));
+        caracter.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+        caracter.setFavorite((long) cursor.getInt(cursor.getColumnIndex("favorite")));
 
+        return caracter;
+    }
 
 
     //metodo para compartilhar contéudo

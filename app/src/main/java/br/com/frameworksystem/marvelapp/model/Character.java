@@ -14,7 +14,17 @@ public class Character implements Serializable{
     public String resourceUri;
     public List<MarvelUrl> urls;
     public String thumbnailUrl;
-//    public MarvelUrl thumbnail;
+    public Long favorite;
+
+    public Long getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Long favorite) {
+        this.favorite = favorite;
+    }
+
+    //    public MarvelUrl thumbnail;
 //    public MarvelResources<ComicResourceDto> comics;
 //    public MarvelResources<StoryResourceDto> stories;
 //    public MarvelResources<EventResourceDto> events;

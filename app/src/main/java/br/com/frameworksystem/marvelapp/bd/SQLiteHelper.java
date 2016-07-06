@@ -3,7 +3,6 @@ package br.com.frameworksystem.marvelapp.bd;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.SyncStateContract;
 import android.util.Log;
 
 import br.com.frameworksystem.marvelapp.util.Constants;
@@ -27,8 +26,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Constants.DDL_CHARACTER);
         sqLiteDatabase.execSQL(Constants.DDL_EVENT);
-        Log.i("BD","CRIADO");
-
     }
 
     @Override
