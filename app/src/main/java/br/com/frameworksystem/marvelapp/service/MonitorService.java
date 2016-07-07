@@ -38,7 +38,7 @@ public class MonitorService extends IntentService{
 
             Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.ic_marvel)
                     .setContentTitle(getResources().getString(R.string.app_name)+" - Intent Service Notification")
                     .setContentText("Opa, Intent Service")
                     .setAutoCancel(true)
