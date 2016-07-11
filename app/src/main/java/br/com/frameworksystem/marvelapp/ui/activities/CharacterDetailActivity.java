@@ -196,7 +196,7 @@ public class CharacterDetailActivity extends BaseActivity {
         caracter.setId(String.valueOf(cursor.getInt(cursor.getColumnIndex("id"))));
         caracter.setName(cursor.getString(cursor.getColumnIndex("name")));
         caracter.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-        caracter.setFavorite((long) cursor.getInt(cursor.getColumnIndex("favorite")));
+//        caracter.setFavorite((long) cursor.getInt(cursor.getColumnIndex("favorite")));
 
         return caracter;
     }

@@ -2,6 +2,7 @@ package br.com.frameworksystem.marvelapp;
 
 import android.app.Application;
 
+import br.com.frameworksystem.marvelapp.api.RemoteAdapter;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -16,5 +17,11 @@ public class MarvelApp extends Application {
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder().
                 setDefaultFontPath("fonts/Roboto-Regular.ttf").
                 setFontAttrId(R.attr.fontPath).build());
+
+        RemoteAdapter.init(getCacheDir());
+
     }
+
+
+
 }

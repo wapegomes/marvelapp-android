@@ -1,9 +1,12 @@
 package br.com.frameworksystem.marvelapp.model;
 
 
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
 import java.io.Serializable;
 import java.util.List;
 
+@JsonObject(fieldDetectionPolicy = JsonObject.FieldDetectionPolicy.NONPRIVATE_FIELDS)
 public class Character implements Serializable{
 
 
@@ -13,18 +16,9 @@ public class Character implements Serializable{
     public String modified;
     public String resourceUri;
     public List<MarvelUrl> urls;
+    public MarvelImage thumbnail;
+
     public String thumbnailUrl;
-    public Long favorite;
-
-    public Long getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Long favorite) {
-        this.favorite = favorite;
-    }
-
-    //    public MarvelUrl thumbnail;
 //    public MarvelResources<ComicResourceDto> comics;
 //    public MarvelResources<StoryResourceDto> stories;
 //    public MarvelResources<EventResourceDto> events;
@@ -40,7 +34,7 @@ public class Character implements Serializable{
                 ", modified='" + modified + '\'' +
                 ", resourceUri='" + resourceUri + '\'' +
                 ", urls=" + urls +
-                ", thumbnail=" + thumbnailUrl +
+                ", thumbnail=" + thumbnail +
                 '}';
     }
 
