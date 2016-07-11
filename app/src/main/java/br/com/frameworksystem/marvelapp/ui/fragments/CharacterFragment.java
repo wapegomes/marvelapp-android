@@ -12,7 +12,12 @@ import android.view.ViewGroup;
 
 import br.com.frameworksystem.marvelapp.Mock;
 import br.com.frameworksystem.marvelapp.R;
+import br.com.frameworksystem.marvelapp.api.CharacterApi;
+import br.com.frameworksystem.marvelapp.api.RemoteAdapter;
+import br.com.frameworksystem.marvelapp.model.CharactersDto;
+import br.com.frameworksystem.marvelapp.model.MarvelResponse;
 import br.com.frameworksystem.marvelapp.ui.adapters.CharacterAdapter;
+import rx.Observable;
 
 
 public class CharacterFragment extends Fragment {
@@ -44,9 +49,11 @@ public class CharacterFragment extends Fragment {
             recyclerView.setLayoutManager(layoutManager);
 
 
-            characterAdapter = new CharacterAdapter(getActivity(), Mock.getCharacters(), recyclerView);
+            characterAdapter = new CharacterAdapter(getActivity(), Mock.getCharacters() , recyclerView);
             recyclerView.setAdapter(characterAdapter);
 
         }
+
+
 
 }

@@ -21,6 +21,7 @@ import br.com.frameworksystem.marvelapp.broadcast.TestReceiver;
 import br.com.frameworksystem.marvelapp.model.Character;
 import br.com.frameworksystem.marvelapp.ui.fragments.CharacterFragment;
 import br.com.frameworksystem.marvelapp.ui.fragments.EventFragment;
+import br.com.frameworksystem.marvelapp.ui.fragments.MapsFragment;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -92,6 +93,8 @@ public class MainActivity extends BaseActivity
             fragment = CharacterFragment.newInstance();
         } else if (id == R.id.nav_evento) {
             fragment = EventFragment.newInstance();
+        } else if (id == R.id.nav_mapa) {
+            fragment = MapsFragment.newInstance();
         }
 
         if (fragment != null) {
