@@ -27,6 +27,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
+import java.util.List;
+
 import br.com.frameworksystem.marvelapp.R;
 
 /**
@@ -68,9 +70,12 @@ public class MapsFragment extends Fragment {
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
         }
 
         UiSettings settings = googleMap.getUiSettings();
@@ -84,6 +89,4 @@ public class MapsFragment extends Fragment {
     private void markerLocation() {
 
     }
-
-
 }
