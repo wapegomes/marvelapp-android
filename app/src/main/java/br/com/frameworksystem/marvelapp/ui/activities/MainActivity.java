@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sendBroadcast(new Intent(this, TestReceiver.class));
+//        sendBroadcast(new Intent(this, TestReceiver.class));
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

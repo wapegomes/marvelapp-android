@@ -26,4 +26,5 @@ public interface Constants {
             "  [image] TEXT, \n" +
             "  [link] TEXT, \n" +
             "  CONSTRAINT [] PRIMARY KEY ([id]));";
+    String SERVICETAG = "SEV";
 }
