@@ -1,36 +1,34 @@
 package br.com.frameworksystem.marvelapp.ui.fragments;
 
 import android.Manifest;
-import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-import java.util.List;
-
 import br.com.frameworksystem.marvelapp.R;
+import br.com.frameworksystem.marvelapp.ui.activities.PlaceActivity;
 
 /**
  * Created by wgomes on 11/07/16.
@@ -38,6 +36,7 @@ import br.com.frameworksystem.marvelapp.R;
 
 public class MapsFragment extends Fragment {
     private GoogleMap googleMap;
+    private LatLng latLng;
 
     public static Fragment newInstance() {
         MapsFragment fragment = new MapsFragment();
@@ -78,17 +77,28 @@ public class MapsFragment extends Fragment {
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
         }
-
+        googleMap.setOnInfoWindowClickListener(onInfoWindowClickListener);
         UiSettings settings = googleMap.getUiSettings();
         settings.setMyLocationButtonEnabled(true);
         settings.setZoomControlsEnabled(true);
         settings.setCompassEnabled(true);
+        latLng = new LatLng(10, 10);
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(new LatLng(10,10)).title("Framework System").snippet("Rua Rio de Janeiro, 1278 - Centro - Belo Horizonte/MG");
+        markerOptions.position(latLng).title("Framework System").snippet("Rua Rio de Janeiro, 1278 - Centro - Belo Horizonte/MG");
         googleMap.addMarker(markerOptions);
 
 
     }
 
+    private GoogleMap.OnInfoWindowClickListener onInfoWindowClickListener = new GoogleMap.OnInfoWindowClickListener() {
+        @Override
+        public void onInfoWindowClick(Marker marker) {
 
+            Intent intent = new Intent(getActivity(), PlaceActivity.class);
+            intent.putExtra("lat", latLng.latitude);
+            intent.putExtra("lng", latLng.longitude);
+            startActivity(intent);
+
+        }
+    };
 }
