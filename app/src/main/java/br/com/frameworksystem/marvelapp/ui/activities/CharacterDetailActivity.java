@@ -31,6 +31,7 @@ import java.util.List;
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.bd.SQLiteHelper;
 import br.com.frameworksystem.marvelapp.model.Character;
+import br.com.frameworksystem.marvelapp.model.MarvelImage;
 import br.com.frameworksystem.marvelapp.service.MP3Player;
 import br.com.frameworksystem.marvelapp.service.MP3Service;
 import br.com.frameworksystem.marvelapp.util.Constants;
@@ -51,7 +52,7 @@ public class CharacterDetailActivity extends BaseActivity {
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            mp3Player = ((MP3Service.MP3Binder)service).getService();
+            mp3Player = ((MP3Service.MP3Binder) service).getService();
         }
 
         @Override
@@ -60,8 +61,8 @@ public class CharacterDetailActivity extends BaseActivity {
         }
     };
 
-    private void connectService(){
-        Intent intent = new Intent(this,MP3Service.class);
+    private void connectService() {
+        Intent intent = new Intent(this, MP3Service.class);
         this.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
@@ -102,10 +103,8 @@ public class CharacterDetailActivity extends BaseActivity {
         ImageView characterImage = (ImageView) findViewById(R.id.character_image);
         TextView characterDescription = (TextView) findViewById(R.id.character_description);
 
-        Picasso.with(this).load(character.getThumbnailUrl()).into(characterImage);
+        Picasso.with(this).load(character.thumbnail.getImageUrl(MarvelImage.Size.DETAIL)).into(characterImage);
         characterDescription.setText(character.getDescription());
-
-        List<Character> characterLista = recuperaDado();
 
         Button play = (Button) findViewById(R.id.play);
         play.setOnClickListener(new View.OnClickListener() {
@@ -161,9 +160,9 @@ public class CharacterDetailActivity extends BaseActivity {
         if (!db.isOpen()) {
             db = SQLiteHelper.getDatabase(this);
         }
-        if (true){
-            db.delete(Constants.CHARACTER_TABLE,"name",new String[]{character.getName()});
-        }else {
+        if (true) {
+            db.delete(Constants.CHARACTER_TABLE, "name", new String[]{character.getName()});
+        } else {
             ContentValues dados = new ContentValues();
 
             dados.put("name", character.getName());

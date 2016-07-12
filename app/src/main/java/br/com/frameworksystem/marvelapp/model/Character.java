@@ -2,12 +2,14 @@ package br.com.frameworksystem.marvelapp.model;
 
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class Character implements Serializable{
+public class Character implements Serializable {
 
-
+    @SerializedName("id")
     public String id;
     public String name;
     public String description;

@@ -15,7 +15,9 @@
 
 package br.com.frameworksystem.marvelapp.model;
 
-public class MarvelImage {
+import java.io.Serializable;
+
+public class MarvelImage implements Serializable{
 
   private static final String SEPARATOR = "/";
   private static final String DOT = ".";

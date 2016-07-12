@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.List;
 
 import br.com.frameworksystem.marvelapp.model.Character;
+import br.com.frameworksystem.marvelapp.model.MarvelCollection;
+import br.com.frameworksystem.marvelapp.model.MarvelResponse;
 import br.com.frameworksystem.marvelapp.util.Constants;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -47,11 +49,11 @@ public class CharacterApi extends BaseApi {
 
                 if (response.isSuccessful()) {
                     Gson gson = new Gson();
-                    List<Character> droids = gson.fromJson(response.body().charStream(),
-                            new TypeToken<List<Character>>() {
+                    MarvelResponse<MarvelCollection<Character>> characters = gson.fromJson(response.body().charStream(),
+                            new TypeToken<MarvelResponse<MarvelCollection<Character>>>() {
                             }.getType());
 
-                    onCharactersListener.onCharacters(droids, 0);
+                    onCharactersListener.onCharacters(characters.data.results, 0);
                 } else {
                     onCharactersListener.onCharacters(null, response.code());
                 }
