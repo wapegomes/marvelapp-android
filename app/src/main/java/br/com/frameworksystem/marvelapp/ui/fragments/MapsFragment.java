@@ -85,8 +85,7 @@ public class MapsFragment extends Fragment {
         settings.setCompassEnabled(true);
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(new LatLng(10,10)).title("Framework System").snippet("Rua Rio de Janeiro, 1278 - Centro - Belo Horizonte/MG");
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pin));
-        Marker marker = googleMap.addMarker(markerOptions);
+        googleMap.addMarker(markerOptions);
 
 
     }
