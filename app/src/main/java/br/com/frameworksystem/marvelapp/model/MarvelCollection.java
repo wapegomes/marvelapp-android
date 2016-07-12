@@ -1,6 +1,5 @@
 package br.com.frameworksystem.marvelapp.model;
 
-import com.bluelinelabs.logansquare.annotation.JsonObject;
 
 import java.util.List;
 
@@ -8,7 +7,6 @@ import java.util.List;
  * Created by wgomes on 11/07/16.
  */
 
-@JsonObject(fieldDetectionPolicy = JsonObject.FieldDetectionPolicy.NONPRIVATE_FIELDS)
 public class MarvelCollection<T> {
 
     public int offset;

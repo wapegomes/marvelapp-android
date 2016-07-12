@@ -1,12 +1,10 @@
 package br.com.frameworksystem.marvelapp.model;
 
 
-import com.bluelinelabs.logansquare.annotation.JsonObject;
 
 import java.io.Serializable;
 import java.util.List;
 
-@JsonObject(fieldDetectionPolicy = JsonObject.FieldDetectionPolicy.NONPRIVATE_FIELDS)
 public class Character implements Serializable{
 
 

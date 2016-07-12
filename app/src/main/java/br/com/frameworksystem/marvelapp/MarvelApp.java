@@ -1,8 +1,11 @@
 package br.com.frameworksystem.marvelapp;
 
 import android.app.Application;
+import android.content.Context;
 
-import br.com.frameworksystem.marvelapp.api.RemoteAdapter;
+import br.com.frameworksystem.marvelapp.api.AuthInterceptor;
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -11,6 +14,12 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MarvelApp extends Application {
 
+    private OkHttpClient okHttpClient;
+    private final int cacheSize = 10 * 1024 * 1024; // 10 MiB
+    private static final String PUBLIC_KEY = "277232a94db26746c653c879d30cec89";
+    private static final String PRIVATE_KEY = "6d332bb5f4ad1eb5e428179c15f492ae7eb74b0d";
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -18,9 +27,29 @@ public class MarvelApp extends Application {
                 setDefaultFontPath("fonts/Roboto-Regular.ttf").
                 setFontAttrId(R.attr.fontPath).build());
 
-        RemoteAdapter.init(getCacheDir());
+        createOkHttpClient();
+    }
+
+    private void createOkHttpClient() {
+        Cache cache = new Cache(getCacheDir(), cacheSize);
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.interceptors().add(new AuthInterceptor(PUBLIC_KEY,PRIVATE_KEY));
+        builder.cache(cache);
+
+        okHttpClient = builder.build();
 
     }
+
+    public static MarvelApp getInstance(Context context) {
+        return (MarvelApp)context.getApplicationContext();
+    }
+
+    public OkHttpClient getOkHttpClient() {
+        return okHttpClient;
+    }
+
+
 
 
 

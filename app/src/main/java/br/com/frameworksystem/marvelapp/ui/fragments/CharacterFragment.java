@@ -9,23 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.frameworksystem.marvelapp.Mock;
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.api.CharacterApi;
-import br.com.frameworksystem.marvelapp.api.RemoteAdapter;
 import br.com.frameworksystem.marvelapp.model.Character;
-import br.com.frameworksystem.marvelapp.model.CharactersDto;
-import br.com.frameworksystem.marvelapp.model.MarvelResponse;
 import br.com.frameworksystem.marvelapp.ui.adapters.CharacterAdapter;
-import rx.Observable;
-import rx.Observer;
-import rx.Scheduler;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 
 public class CharacterFragment extends Fragment {
@@ -56,32 +48,34 @@ public class CharacterFragment extends Fragment {
             recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
             recyclerView.setLayoutManager(layoutManager);
 
-            final ArrayList<Character> list = new ArrayList<>();
 
-            Observable<MarvelResponse<CharactersDto>> remote = RemoteAdapter.getApi(CharacterApi.class).getAll(20,1,null);
-            remote.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new Observer<MarvelResponse<CharactersDto>>() {
-                @Override
-                public void onCompleted() {
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-
-                }
-
-                @Override
-                public void onNext(MarvelResponse<CharactersDto> charactersDtoMarvelResponse) {
-                     list.addAll(charactersDtoMarvelResponse.data.results);
-                }
-            });
-
-
-            characterAdapter = new CharacterAdapter(getActivity(), list , recyclerView);
-            recyclerView.setAdapter(characterAdapter);
+           getCharacters();
 
         }
 
+    private void getCharacters(){
+
+        final CharacterApi characterApi = new CharacterApi(getActivity());
+        characterApi.characters(new CharacterApi.OnCharactersListener() {
+            @Override
+            public void onCharacters(final List<Character> characters, int errorCode) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (characters != null) {
+                            characterAdapter = new CharacterAdapter(getActivity(), characters, recyclerView);
+                            recyclerView.setAdapter(characterAdapter);
+                        }
+                        else {
+                            Toast.makeText(getActivity(), R.string.msg_error_generic,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+    }
 
 
 }

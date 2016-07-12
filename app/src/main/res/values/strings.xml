@@ -15,6 +15,7 @@
     <string name="stop">Stop</string>
     <string name="maps">Mapa</string>
     <string name="MAPS_API">AIzaSyCvJo36oL6PNnRNDg1a6e9HZ0omJK1Y0bo</string>
+    <string name="msg_error_generic">Erro Generico ao recuperar os dados.</string>
 
 
 </resources>
