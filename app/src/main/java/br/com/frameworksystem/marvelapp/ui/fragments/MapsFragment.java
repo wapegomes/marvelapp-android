@@ -21,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -68,7 +69,7 @@ public class MapsFragment extends Fragment {
 
     private void setup() {
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED &&
@@ -82,11 +83,13 @@ public class MapsFragment extends Fragment {
         settings.setMyLocationButtonEnabled(true);
         settings.setZoomControlsEnabled(true);
         settings.setCompassEnabled(true);
-        markerLocation();
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(new LatLng(10,10)).title("Framework System").snippet("Rua Rio de Janeiro, 1278 - Centro - Belo Horizonte/MG");
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pin));
+        Marker marker = googleMap.addMarker(markerOptions);
+
 
     }
 
-    private void markerLocation() {
 
-    }
 }
