@@ -95,6 +95,9 @@ public class MainActivity extends BaseActivity
             fragment = EventFragment.newInstance();
         } else if (id == R.id.nav_mapa) {
             fragment = MapsFragment.newInstance();
+        } else if (id == R.id.nav_blue) {
+            Intent intent = new Intent(this, BluetoothActivity.class);
+            startActivity(intent);
         }
 
         if (fragment != null) {

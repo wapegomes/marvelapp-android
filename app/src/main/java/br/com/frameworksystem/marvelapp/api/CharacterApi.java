@@ -14,6 +14,7 @@ import br.com.frameworksystem.marvelapp.model.MarvelResponse;
 import br.com.frameworksystem.marvelapp.util.Constants;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -29,9 +30,15 @@ public class CharacterApi extends BaseApi {
 
     public void characters(final OnCharactersListener onCharactersListener) {
 
-        Request request = new Request.Builder()
-                .url(Constants.API_CHARACTER)
-                .get().build();
+       Request request = new Request.Builder()
+               .url(Constants.API_COMIT.replace("{characterId}","1010354"))
+               .get().build();
+
+//        Request request = new Request.Builder()
+//                .url(Constants.API_CHARACTER)
+//                .get().build();
+
+
 
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override

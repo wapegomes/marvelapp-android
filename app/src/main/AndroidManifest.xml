@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.frameworksystem.marvelapp">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -59,6 +62,8 @@
                 android:value=".ui.activities.MainActivity" />
         </activity>
 
+        <activity android:name=".ui.activities.BluetoothActivity"/>
+
         <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -88,6 +93,7 @@
             android:name=".service.LogService"
             android:enabled="true"
             android:exported="false" />
+
 
     </application>
 </manifest>
