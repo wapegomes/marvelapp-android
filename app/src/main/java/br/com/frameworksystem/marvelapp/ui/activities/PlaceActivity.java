@@ -24,7 +24,8 @@ import br.com.frameworksystem.marvelapp.R;
  * Created by wgomes on 12/07/16.
  */
 
-public class PlaceActivity extends BaseActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class PlaceActivity extends BaseActivity implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private GoogleApiClient mGoogleApiClient;
     private Location mCurrentLocation;
