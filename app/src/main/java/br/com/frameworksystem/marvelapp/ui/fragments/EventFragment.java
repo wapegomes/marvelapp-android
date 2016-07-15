@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import br.com.frameworksystem.marvelapp.Mock;
+//import br.com.frameworksystem.marvelapp.Mock;
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.ui.adapters.EventAdapter;
 
@@ -45,7 +45,7 @@ public class EventFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        eventAdapter = new EventAdapter(getActivity(), Mock.getEvents(), recyclerView);
+//        eventAdapter = new EventAdapter(getActivity(), Mock.getEvents(), recyclerView);
         recyclerView.setAdapter(eventAdapter);
 
     }

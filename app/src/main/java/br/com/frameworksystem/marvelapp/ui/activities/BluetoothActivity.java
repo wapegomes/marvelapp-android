@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
 
 import br.com.frameworksystem.marvelapp.ui.fragments.DeviceListFragment;
 import br.com.frameworksystem.marvelapp.R;
@@ -57,6 +58,13 @@ public class BluetoothActivity extends BaseActivity implements DeviceListFragmen
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_BLUETOOTH){
+            Toast.makeText(this,"Ligado",Toast.LENGTH_SHORT);
+        }
+    }
 
     @Override
     public void onFragmentInteraction(String id) {

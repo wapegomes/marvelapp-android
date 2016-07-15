@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import br.com.frameworksystem.marvelapp.Mock;
+//import br.com.frameworksystem.marvelapp.Mock;
 import br.com.frameworksystem.marvelapp.R;
 import br.com.frameworksystem.marvelapp.api.CharacterApi;
 import br.com.frameworksystem.marvelapp.model.Character;

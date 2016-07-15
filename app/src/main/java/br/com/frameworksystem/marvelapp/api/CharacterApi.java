@@ -30,13 +30,13 @@ public class CharacterApi extends BaseApi {
 
     public void characters(final OnCharactersListener onCharactersListener) {
 
-       Request request = new Request.Builder()
-               .url(Constants.API_COMIT.replace("{characterId}","1010354"))
-               .get().build();
+//       Request request = new Request.Builder()
+//               .url(Constants.API_COMIT.replace("{characterId}","1010354"))
+//               .get().build();
 
-//        Request request = new Request.Builder()
-//                .url(Constants.API_CHARACTER)
-//                .get().build();
+        Request request = new Request.Builder()
+                .url(Constants.API_CHARACTER)
+                .get().build();
 
 
 
