@@ -10,5 +10,11 @@
     <string name="eventos">Eventos</string>
 
     <string name="title_share">Compartilhar</string>
+    <string name="img01">img01</string>
+    <string name="img02">img02</string>
+    <string name="img03">img03</string>
+    <string name="img04">img04</string>
+    <string name="skip">Skip</string>
+
 
 </resources>

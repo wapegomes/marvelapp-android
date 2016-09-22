@@ -2,15 +2,14 @@ package br.com.frameworksystem.marvelapp.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import br.com.frameworksystem.marvelapp.R;
+import br.com.frameworksystem.marvelapp.ui.adapters.CustomPagerAdapter;
 
 /**
  * Created by wgomes on 21/09/16.
@@ -18,24 +17,33 @@ import br.com.frameworksystem.marvelapp.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
+    private RelativeLayout relativeLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        loadGalleryImages();
 
-        ImageView img = (ImageView) findViewById(R.id.img_splah);
-        Picasso.with(this).load(R.mipmap.ic_launcher).resize(500,500).centerCrop().into(img);
-
-        new Timer().schedule(new TimerTask() {
+        relativeLayout = (RelativeLayout) findViewById(R.id.skip);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View v) {
+                Intent main = new Intent(SplashScreenActivity.this, MainActivity.class);
+                startActivity(main);
                 finish();
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(intent);
-
             }
-        }, 3000);
+        });
 
+    }
+
+    private void loadGalleryImages() {
+
+        CustomPagerAdapter adapter = new CustomPagerAdapter();
+        ViewPager myPager = (ViewPager) findViewById(R.id.viewpager);
+
+        myPager.setAdapter(adapter);
+        myPager.setCurrentItem(0);
 
     }
 
