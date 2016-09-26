@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -27,39 +28,21 @@ public class CustomPagerAdapter extends PagerAdapter {
         return Imgid.length;
     }
 
-    public Object instantiateItem(View collection, int position) {
+    @Override
+    public Object instantiateItem(ViewGroup collection, int position) {
 
 
         ImageView img = new ImageView(collection.getContext());
-
-
-        int resId = 0;
-        switch (position) {
-            case 0:
-                resId = Imgid[0];
-                break;
-            case 1:
-                resId = Imgid[1];
-                break;
-            case 2:
-                resId = Imgid[2];
-                break;
-            case 3:
-                resId = Imgid[3];
-                break;
-            case 4:
-                resId = Imgid[4];
-                break;
-        }
-
-        img.setImageResource(resId);
+        img.setImageResource(Imgid[position]);
         ((ViewPager) collection).addView(img, 0);
         return img;
     }
 
-    public void destroyItem(View arg0, int arg1, Object arg2) {
-        ((ViewPager) arg0).removeView((View) arg2);
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        ((ViewPager) container).removeView((View) object);
     }
+
 
     public boolean isViewFromObject(View arg0, Object arg1) {
         return arg0 == ((View) arg1);
