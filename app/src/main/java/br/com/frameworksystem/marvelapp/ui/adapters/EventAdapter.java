@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,11 +30,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     private Context context;
     private List<Event> events;
     private RecyclerView recyclerView;
+    private Boolean isTablet;
+    private WebView webView;
 
-    public EventAdapter(Context context, List<Event> eventList, RecyclerView recyclerView) {
+    public EventAdapter(Context context, List<Event> eventList, RecyclerView recyclerView, boolean isTablet, WebView webView) {
         this.context = context;
         this.events = eventList;
         this.recyclerView = recyclerView;
+        this.isTablet = isTablet;
+        this.webView = webView;
     }
 
     @Override
@@ -77,13 +82,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 int position = recyclerView.getChildAdapterPosition(v);
                 Event event = events.get(position);
+                if (!isTablet) {
+                    Intent intent = new Intent(context, EventDetailActivity.class);
+                    intent.putExtra("event", event);
+                    context.startActivity(intent);
+                }else{
+                    //Apenas para exemplicar
+                    webView.loadUrl(event.urls.get(0).url);
+                }
 
-                Intent intent = new Intent(context, EventDetailActivity.class);
-                intent.putExtra("event", event);
-                context.startActivity(intent);
             }
         };
 

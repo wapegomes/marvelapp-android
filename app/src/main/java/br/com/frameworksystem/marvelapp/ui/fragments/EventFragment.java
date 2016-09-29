@@ -8,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 //import br.com.frameworksystem.marvelapp.Mock;
 import br.com.frameworksystem.marvelapp.R;
@@ -22,6 +25,8 @@ public class EventFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
+    private Boolean isTablet;
+    private WebView webView;
 
 
     public static Fragment newInstance() {
@@ -31,7 +36,12 @@ public class EventFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recycler, container, false);
+        isTablet = getResources().getBoolean(R.bool.is_tablet);
+        if (!isTablet) {
+            return inflater.inflate(R.layout.fragment_recycler, container, false);
+        } else {
+            return inflater.inflate(R.layout.fragment_recycler_tablet, container, false);
+        }
     }
 
     @Override
@@ -44,11 +54,12 @@ public class EventFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(layoutManager);
 
+        if (isTablet) {
+            webView = (WebView) view.findViewById(R.id.webview_event_detail_tablet);
+        }
 
 //        eventAdapter = new EventAdapter(getActivity(), Mock.getEvents(), recyclerView);
-        recyclerView.setAdapter(eventAdapter);
+//        recyclerView.setAdapter(eventAdapter);
 
     }
-
-
 }

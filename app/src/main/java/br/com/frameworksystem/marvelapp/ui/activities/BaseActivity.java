@@ -2,6 +2,7 @@ package br.com.frameworksystem.marvelapp.ui.activities;
 
 import android.content.Context;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -14,6 +15,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 
 public class BaseActivity extends AppCompatActivity {
+
+    public String sharedPreferencesFile = "MY_SHARED_PREFERENCES";
 
     @Override
     protected void attachBaseContext(Context newBase) {
