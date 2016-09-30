@@ -31,7 +31,8 @@ public class MainActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences prefs = getSharedPreferences(sharedPreferencesFile,MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(sharedPreferencesFile,
+                MODE_PRIVATE);
         boolean visited = prefs.getBoolean(getString(R.string.visited_splash),false);
         if (!visited) {
             Intent splash = new Intent(MainActivity.this, SplashScreenActivity.class);

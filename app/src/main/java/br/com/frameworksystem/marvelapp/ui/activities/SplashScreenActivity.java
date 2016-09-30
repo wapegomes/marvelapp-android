@@ -32,7 +32,8 @@ public class SplashScreenActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                SharedPreferences sharedPref = getSharedPreferences(sharedPreferencesFile,Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getSharedPreferences(sharedPreferencesFile,
+                        Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean(getString(R.string.visited_splash), true);
                 editor.commit();
