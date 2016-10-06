@@ -31,7 +31,8 @@ import br.com.frameworksystem.marvelapp.R;
  */
 
 public class PlaceActivity extends BaseActivity implements
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
+        LocationListener {
 
     private GoogleApiClient mGoogleApiClient;
     private Location mCurrentLocation;
@@ -56,6 +57,7 @@ public class PlaceActivity extends BaseActivity implements
         latitude = getIntent().getDoubleExtra("lat", 0);
         longitude = getIntent().getDoubleExtra("lng", 0);
         latLng = new LatLng(latitude, longitude);
+
 
 
         userLocation = (TextView) findViewById(R.id.user_location);

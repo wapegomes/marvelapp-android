@@ -38,7 +38,8 @@ import br.com.frameworksystem.marvelapp.ui.adapters.DeviceListAdapter;
 import br.com.frameworksystem.marvelapp.R;
 
 
-public class DeviceListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class DeviceListFragment extends Fragment
+        implements AbsListView.OnItemClickListener {
 
     private ArrayList<DeviceItem> deviceItemList;
 
@@ -57,7 +58,8 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
             String action = intent.getAction();
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 Log.d("DEVICELIST", "Bluetooth device found\n");
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                BluetoothDevice device =
+                        intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 // Create a new device item
                 DeviceItem newDevice = new DeviceItem(device.getName(), device.getAddress(), "false");
                 // Add it to our adapter
@@ -126,12 +128,15 @@ public class DeviceListFragment extends Fragment implements AbsListView.OnItemCl
                     final int REQUEST_ACCESS_COARSE_LOCATION = 1;
                     getActivity().registerReceiver(bReciever, filter);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {  // Only ask for these permissions on runtime when running Android 6.0 or higher
-                        switch (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                        switch (ContextCompat.checkSelfPermission(getActivity(),
+                                Manifest.permission.ACCESS_COARSE_LOCATION)) {
                             case PackageManager.PERMISSION_DENIED:
                                 ((TextView) new AlertDialog.Builder(getActivity())
                                         .setTitle("Runtime Permissions up ahead")
-                                        .setMessage(Html.fromHtml("<p>To find nearby bluetooth devices please click \"Allow\" on the runtime permissions popup.</p>" +
-                                                "<p>For more info see <a href=\"http://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id\">here</a>.</p>"))
+                                        .setMessage(Html.fromHtml("<p>To" +
+                                                " find nearby bluetooth devices please click \"Allow\" on the runtime permissions popup.</p>" +
+                                                "<p>For more info see" +
+                                                " <a href=\"http://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id\">here</a>.</p>"))
                                         .setNeutralButton("Okay", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {

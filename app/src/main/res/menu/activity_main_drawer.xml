@@ -23,4 +23,14 @@
 
     </group>
 
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:title="@string/camera"
+            android:icon="@drawable/ic_menu_camera"/>
+
+        </group>
+
+
 </menu>

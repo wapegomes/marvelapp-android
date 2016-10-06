@@ -25,6 +25,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 
 import br.com.frameworksystem.marvelapp.R;
@@ -70,9 +71,11 @@ public class MapsFragment extends Fragment {
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                ContextCompat.checkSelfPermission(getActivity(),
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -84,13 +87,21 @@ public class MapsFragment extends Fragment {
         settings.setCompassEnabled(true);
         latLng = new LatLng(10, 10);
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng).title("Framework System").snippet("Rua Rio de Janeiro, 1278 - Centro - Belo Horizonte/MG");
+        markerOptions.position(latLng).title("Framework System")
+                .snippet("Rua Rio de Janeiro, 1278 - Centro - Belo Horizonte/MG");
         googleMap.addMarker(markerOptions);
+
+        PolygonOptions line = new PolygonOptions();
+        line.add(latLng);
+        line.add(new LatLng(11,11));
+        googleMap.addPolygon(line);
+
 
 
     }
 
-    private GoogleMap.OnInfoWindowClickListener onInfoWindowClickListener = new GoogleMap.OnInfoWindowClickListener() {
+    private GoogleMap.OnInfoWindowClickListener
+            onInfoWindowClickListener = new GoogleMap.OnInfoWindowClickListener() {
         @Override
         public void onInfoWindowClick(Marker marker) {
 
