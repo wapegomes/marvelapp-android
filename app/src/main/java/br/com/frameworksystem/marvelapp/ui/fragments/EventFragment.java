@@ -9,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-//import br.com.frameworksystem.marvelapp.Mock;
+import java.util.List;
+
 import br.com.frameworksystem.marvelapp.R;
+import br.com.frameworksystem.marvelapp.api.EventApi;
+import br.com.frameworksystem.marvelapp.model.Event;
 import br.com.frameworksystem.marvelapp.ui.adapters.EventAdapter;
+
+//import br.com.frameworksystem.marvelapp.Mock;
 
 /**
  * Created by wgomes on 22/06/16.
@@ -35,7 +38,8 @@ public class EventFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
         isTablet = getResources().getBoolean(R.bool.is_tablet);
         if (!isTablet) {
             return inflater.inflate(R.layout.fragment_recycler, container, false);
@@ -51,6 +55,8 @@ public class EventFragment extends Fragment {
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getActivity());
 
+        layoutManager.scrollToPosition(1);
+
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -58,8 +64,38 @@ public class EventFragment extends Fragment {
             webView = (WebView) view.findViewById(R.id.webview_event_detail_tablet);
         }
 
-//        eventAdapter = new EventAdapter(getActivity(), Mock.getEvents(), recyclerView);
-//        recyclerView.setAdapter(eventAdapter);
+        getEvents(isTablet);
 
     }
+
+    private void getEvents(final Boolean isTablet) {
+
+        final EventApi eventApi = new EventApi(getActivity());
+        eventApi.events(new EventApi.OnEventListener() {
+            @Override
+            public void onEventListener(final List<Event> events, int errorCode) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (events != null) {
+                            if (isTablet) {
+                                eventAdapter = new EventAdapter(getActivity(), events, recyclerView,
+                                        isTablet, webView);
+                            } else {
+                                eventAdapter = new EventAdapter(getActivity(), events, recyclerView,
+                                        isTablet);
+                            }
+                            recyclerView.setAdapter(eventAdapter);
+                        } else {
+                            Toast.makeText(getActivity(), R.string.msg_error_generic,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+    }
+
+
 }

@@ -33,5 +33,7 @@ public interface Constants {
 
     String API_CHARACTER = BASEURL + "/v1/public/characters";
 
+    String API_EVENT = BASEURL + "/v1/public/events";
+
     String API_COMIT = BASEURL + "/v1/public/characters/{characterId}";
 }
