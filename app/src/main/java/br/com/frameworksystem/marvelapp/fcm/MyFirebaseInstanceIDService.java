@@ -6,9 +6,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 
-/**
- * Created by wgomes on 05/07/16.
- */
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     public void onTokenRefresh() {
